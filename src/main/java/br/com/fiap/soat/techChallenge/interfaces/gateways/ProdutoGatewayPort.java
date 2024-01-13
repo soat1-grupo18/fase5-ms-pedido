@@ -10,8 +10,6 @@ public interface ProdutoGatewayPort {
     Produto cadastrar(Produto produto);
     List<Produto> obterProdutosPor(TipoDeProduto categoria);
     Optional<Produto> identificarPorId(UUID id);
-
     Produto editar(Produto produto);
-
     void excluir(UUID id);
 }

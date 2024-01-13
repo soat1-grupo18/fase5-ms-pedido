@@ -1,8 +1,5 @@
 package br.com.fiap.soat.techChallenge.entities;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,29 +10,18 @@ public class Pedido {
     private UUID id;
     private UUID clienteId;
     private BigDecimal preco;
-    @Enumerated(EnumType.STRING)
-    private StatusDoPedido statusDoPedido;
-    @Enumerated(EnumType.STRING)
-    private StatusDoPagamento statusDoPagamento;
     private List<ItemDoPedido> itens;
-    private UUID pagamentoId;
     private LocalDateTime dataDeCriacao;
 
     public Pedido(UUID id,
                   UUID clienteId,
                   BigDecimal preco,
-                  StatusDoPedido statusDoPedido,
-                  StatusDoPagamento statusDoPagamento,
                   List<ItemDoPedido> itens,
-                  UUID pagamentoId,
                   LocalDateTime dataDeCriacao) {
         this.id = id;
         this.clienteId = clienteId;
         this.preco = preco;
-        this.statusDoPedido = statusDoPedido;
-        this.statusDoPagamento = statusDoPagamento;
         this.itens = itens;
-        this.pagamentoId = pagamentoId;
         this.dataDeCriacao = dataDeCriacao;
     }
 
@@ -65,13 +51,6 @@ public class Pedido {
         this.preco = this.preco.add(item.getPrecoUnitario().multiply(new BigDecimal(item.getQuantidade())));
     }
 
-    public StatusDoPedido getStatusDoPedido() {
-        return statusDoPedido;
-    }
-
-    public void setStatusDoPedido(StatusDoPedido statusDoPedido) {
-        this.statusDoPedido = statusDoPedido;
-    }
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
@@ -83,28 +62,9 @@ public class Pedido {
     public void setItens(List<ItemDoPedido> itens) {
         this.itens = itens;
     }
+
     public List<ItemDoPedido> getItens() {
         return itens;
-    }
-
-    public StatusDoPagamento getStatusDoPagamento() {
-        return statusDoPagamento;
-    }
-
-    public void setStatusDoPagamento(StatusDoPagamento statusDoPagamento) {
-        this.statusDoPagamento = statusDoPagamento;
-    }
-
-    public boolean isPagamentoAprovado() {
-        return this.statusDoPagamento == StatusDoPagamento.APROVADO;
-    }
-
-    public UUID getPagamentoId() {
-        return pagamentoId;
-    }
-
-    public void setPagamentoId(UUID pagamentoId) {
-        this.pagamentoId = pagamentoId;
     }
 
     public LocalDateTime getDataDeCriacao() {

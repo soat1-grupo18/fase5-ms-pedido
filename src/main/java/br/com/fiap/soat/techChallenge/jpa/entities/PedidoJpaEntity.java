@@ -1,8 +1,6 @@
 package br.com.fiap.soat.techChallenge.jpa.entities;
 
 import br.com.fiap.soat.techChallenge.entities.Pedido;
-import br.com.fiap.soat.techChallenge.entities.StatusDoPagamento;
-import br.com.fiap.soat.techChallenge.entities.StatusDoPedido;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -19,10 +17,6 @@ public class PedidoJpaEntity {
     private UUID id;
     private UUID clienteId;
     private BigDecimal preco;
-    private StatusDoPedido statusDoPedido;
-
-    private StatusDoPagamento statusDoPagamento;
-    private UUID pagamentoId;
     private LocalDateTime dataDeCriacao;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -52,22 +46,6 @@ public class PedidoJpaEntity {
         this.preco = preco;
     }
 
-    public StatusDoPedido getStatusDoPedido() {
-        return statusDoPedido;
-    }
-
-    public void setStatusDoPedido(StatusDoPedido statusDoPedido) {
-        this.statusDoPedido = statusDoPedido;
-    }
-
-    public StatusDoPagamento getStatusDoPagamento() {
-        return statusDoPagamento;
-    }
-
-    public void setStatusDoPagamento(StatusDoPagamento statusDoPagamento) {
-        this.statusDoPagamento = statusDoPagamento;
-    }
-
     public List<ItemDoPedidoJpaEntity> getItens() {
         return itens;
     }
@@ -81,10 +59,7 @@ public class PedidoJpaEntity {
             id,
             clienteId,
             preco,
-            statusDoPedido,
-            statusDoPagamento,
             itens.stream().map(ItemDoPedidoJpaEntity::toDomain).collect(Collectors.toList()),
-            pagamentoId,
             dataDeCriacao
         );
     }
@@ -95,9 +70,6 @@ public class PedidoJpaEntity {
         pedidoJpaEntity.setId(pedido.getId());
         pedidoJpaEntity.setClienteId(pedido.getClienteId());
         pedidoJpaEntity.setPreco(pedido.getPreco());
-        pedidoJpaEntity.setStatusDoPedido(pedido.getStatusDoPedido());
-        pedidoJpaEntity.setStatusDoPagamento(pedido.getStatusDoPagamento());
-        pedidoJpaEntity.setPagamentoId(pedido.getPagamentoId());
         pedidoJpaEntity.setItens(pedido.getItens().stream().map(itemDoPedido -> {
             ItemDoPedidoJpaEntity itemDoPedidoJpaEntity = ItemDoPedidoJpaEntity.fromDomain(itemDoPedido);
 
@@ -108,14 +80,6 @@ public class PedidoJpaEntity {
         pedidoJpaEntity.setDataDeCriacao(pedido.getDataDeCriacao());
 
         return pedidoJpaEntity;
-    }
-
-    public UUID getPagamentoId() {
-        return pagamentoId;
-    }
-
-    public void setPagamentoId(UUID pagamentoId) {
-        this.pagamentoId = pagamentoId;
     }
 
     public LocalDateTime getDataDeCriacao() {
