@@ -120,35 +120,35 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t olegon/soat1-grupo18-ms-pedido:${{ github.sha }} .
+          docker build -t ${{ secrets.DOCKER_HUB_USER }}/soat1-grupo18-ms-pedido:${{ github.sha }} .
 
       - name: Push image
         run: |
-          docker login -u olegon -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push olegon/soat1-grupo18-ms-pedido:${{ github.sha }}
+          docker login -u ${{ secrets.DOCKER_HUB_USER }} -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push ${{ secrets.DOCKER_HUB_USER }}/soat1-grupo18-ms-pedido:${{ github.sha }}
 
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v3
-        with:
-          version: 'v1.28.3'
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: Configure kubectl
-        run: |
-          aws eks update-kubeconfig --name fiap-cluster
-
-      - name: Edit k8s manifests
-        working-directory: kubernetes
-        run: |
-          sed -i 's/image: APPLICATION_IMAGE_HOLDER/image: olegon\/soat1-grupo18-ms-pedido:${{ github.sha }}/' deployment-api.yaml
-          cat deployment-api.yaml
-
-      - name: Apply changes
-        run: |
-          kubectl apply -f kubernetes
+#      - name: Install kubectl
+#        uses: azure/setup-kubectl@v3
+#        with:
+#          version: 'v1.28.3'
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v4
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: us-east-1
+#
+#      - name: Configure kubectl
+#        run: |
+#          aws eks update-kubeconfig --name fiap-cluster
+#
+#      - name: Edit k8s manifests
+#        working-directory: kubernetes
+#        run: |
+#          sed -i 's/image: APPLICATION_IMAGE_HOLDER/image: olegon\/soat1-grupo18-ms-pedido:${{ github.sha }}/' deployment-api.yaml
+#          cat deployment-api.yaml
+#
+#      - name: Apply changes
+#        run: |
+#          kubectl apply -f kubernetes
