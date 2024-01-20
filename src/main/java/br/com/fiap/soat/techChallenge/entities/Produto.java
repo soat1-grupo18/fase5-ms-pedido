@@ -3,6 +3,7 @@ package br.com.fiap.soat.techChallenge.entities;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Produto {
@@ -68,5 +69,18 @@ public class Produto {
 
     public String getImagem() {
         return imagem;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Objects.equals(id, produto.id) && Objects.equals(nome, produto.nome) && categoria == produto.categoria && Objects.equals(preco, produto.preco) && Objects.equals(descricao, produto.descricao) && Objects.equals(imagem, produto.imagem);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, categoria, preco, descricao, imagem);
     }
 }
