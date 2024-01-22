@@ -1,5 +1,6 @@
 package br.com.fiap.soat.techChallenge.builders;
 
+import br.com.fiap.soat.techChallenge.api.requests.ProdutoRequest;
 import br.com.fiap.soat.techChallenge.entities.Produto;
 import br.com.fiap.soat.techChallenge.entities.TipoDeProduto;
 
@@ -19,6 +20,16 @@ public class ProdutoBuilder {
             list.add(build());
         }
         return list;
+    }
+
+    public static ProdutoRequest buildRequest() {
+        var produtoRequest = new ProdutoRequest();
+        produtoRequest.setNome("Cheeseburger");
+        produtoRequest.setCategoria(TipoDeProduto.LANCHE);
+        produtoRequest.setPreco(15.0F);
+        produtoRequest.setDescricao("Burger 150g, queijo, molho da casa");
+        produtoRequest.setImagem("");
+        return produtoRequest;
     }
 
     private static Float getRandomNumber(Float min, Float max) {
