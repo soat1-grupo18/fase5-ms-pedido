@@ -5,6 +5,9 @@ on:
     branches:
       - 'main'
 
+permissions:
+  id-token: write
+
 jobs:
   microservices-deploy:
     uses: soat1-grupo18/fase3-reusable-github-workflows/.github/workflows/microservices-deploy.yml@main
