@@ -20,8 +20,8 @@ jobs:
     name: Deploy
     environment: production
     runs-on: ubuntu-latest
-    # needs:
-    #   - microservices-deploy
+    needs:
+      - microservices-deploy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,10 +40,6 @@ jobs:
       - name: Configure kubectl
         run: |
           aws eks update-kubeconfig --name fiap-cluster
-
-      # - name: Deploy it
-      #   run: |
-      #     kubectl apply -f kubernetes/ --namespace default
 
       - uses: Azure/k8s-deploy@v4
         with:
