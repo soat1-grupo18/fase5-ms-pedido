@@ -41,16 +41,16 @@ jobs:
         run: |
           aws eks update-kubeconfig --name fiap-cluster
 
-      - name: Deploy it
-        run: |
-          kubectl apply -f kubernetes/ --namespace default
+      # - name: Deploy it
+      #   run: |
+      #     kubectl apply -f kubernetes/ --namespace default
 
-      # - uses: Azure/k8s-deploy@v4
-      #   with:
-      #     namespace: 'myapp'
-      #     manifests: |
-      #         kubernetes/
-      #     images: '${{ secrets.DOCKER_HUB_USER }}/soat1-grupo18-ms-pedido:${{ github.sha }}'
+      - uses: Azure/k8s-deploy@v4
+        with:
+          namespace: default
+          manifests: |
+              kubernetes/
+          images: '${{ secrets.DOCKER_HUB_USER }}/soat1-grupo18-ms-pedido:${{ github.sha }}'
 
   # curl-tests:
   #   name: Test
