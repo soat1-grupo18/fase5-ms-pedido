@@ -22,7 +22,7 @@ class RestApiApplicationIT {
     }
 
     @Test
-    void deveApliacaoIniciarCorretamente() {
+    void deveIniciarAplicacaoCorretamente() {
         given()
                 .when()
                 .get("/actuator/health")

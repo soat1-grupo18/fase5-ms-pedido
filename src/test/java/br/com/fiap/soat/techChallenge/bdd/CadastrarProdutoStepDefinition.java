@@ -14,7 +14,7 @@ public class CadastrarProdutoStepDefinition {
 
     private Response response;
 
-    private String ENDPOINT_PRODUTOS = "http://localhost:8080/produtos";
+    private String ENDPOINT_PRODUTOS = "http://localhost:8082/produtos";
 
     @Quando("eu cadastrar o produto")
     public void euCadastrarOProduto() {
