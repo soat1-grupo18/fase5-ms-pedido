@@ -15,14 +15,14 @@ resource "aws_db_subnet_group" "fiap_private_subnets" {
   subnet_ids = data.aws_subnets.private.ids
 }
 
-resource "aws_db_instance" "fiap_food_api" {
+resource "aws_db_instance" "fiap_ms_pedido" {
   allocated_storage       = 20
   storage_type            = "gp2"
   engine                  = "postgres"
   engine_version          = "15.3"
   instance_class          = "db.t3.micro"
-  identifier              = "fiap-food-api"
-  db_name                 = "fiap_food_api"
+  identifier              = "fiap-ms-pedido"
+  db_name                 = "fiap_ms_pedido"
   username                = "dbuser"
   password                = "dbpassword"
   parameter_group_name    = "default.postgres15"
