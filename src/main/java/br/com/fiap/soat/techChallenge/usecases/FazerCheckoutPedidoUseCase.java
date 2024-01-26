@@ -58,7 +58,7 @@ public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePor
 
         pedido = pedidoGateway.inserirPedido(pedido);
 
-        pagamentoGateway.iniciarPagamento(pedido);
+        pagamentoGateway.criarPagamento(pedido);
         producaoGateway.iniciarProducao(pedido);
 
         return pedido;
