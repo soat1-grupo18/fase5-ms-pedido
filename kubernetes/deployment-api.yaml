@@ -35,4 +35,4 @@ spec:
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: update
         ports:
-        - containerPort: 8080
+        - containerPort: 8082
