@@ -25,7 +25,9 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "2000m"
-        env: 
+        env:
+        - name: SERVER_PORT
+          value: "8080"
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://fiap-food-api.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_food_api
         - name: SPRING_DATASOURCE_USERNAME
@@ -35,4 +37,4 @@ spec:
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: update
         ports:
-        - containerPort: 8082
+        - containerPort: 8080

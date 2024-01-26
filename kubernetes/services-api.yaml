@@ -9,5 +9,5 @@ spec:
     app: ms-pedido
   ports:
   - port: 80
-    targetPort: 8082
+    targetPort: 8080
   type: ClusterIP
