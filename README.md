@@ -18,17 +18,17 @@ Microsserviço de Pedido criado durante a fase 4 da Pós Tech Software Architect
 
 ## Tech Challenge
 
-Projeto realizado durante o primeiro módulo da Pós Tech Software Architecture da FIAP.
+Projeto realizado durante o quarto módulo da Pós Tech Software Architecture da FIAP.
 
 ### Alunos
 
-|                            Nome |     RM     |
-| ------------------------------: | :--------: |
-|    Elvis Freitas Lopes Herllain | `rm349139` |
-|            Gisele Mara Leonardi | `rm349242` |
-|   Leandro Gonçalves de Oliveira | `rm348615` |
-|                 Pablo Lima Dias | `rm349149` |
-| Pedro Henrique Gregorio Ignacio | `rm349099` |
+|                                           Nome |     RM     |
+|-----------------------------------------------:| :--------: |
+|                   Elvis Freitas Lopes Herllain | `rm349139` |
+|                           Gisele Mara Leonardi | `rm349242` |
+|                  Leandro Gonçalves de Oliveira | `rm348615` |
+|                       Marcos Venâncio de Souza | `rm349251` |
+|                                Pablo Lima Dias | `rm349149` |
 
 ### Tecnologias utilizadas
 
@@ -61,7 +61,7 @@ kubectl apply -f kubernetes/
 
 ### Swagger
 
-Para acessar o Swagger da aplicação, acesse o caminho [/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) da aplicação.
+Para acessar o Swagger da aplicação, acesse o caminho [/swagger-ui/index.html](http://localhost:8082/swagger-ui/index.html) da aplicação.
 
 ### Insomnia
 
