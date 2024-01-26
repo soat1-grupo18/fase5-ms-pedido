@@ -29,7 +29,7 @@ spec:
         - name: SERVER_PORT
           value: "8080"
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:postgresql://fiap-food-api.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_food_api
+          value: jdbc:postgresql://fiap-ms-pedido.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_ms_pedido
         - name: SPRING_DATASOURCE_USERNAME
           value: dbuser
         - name: SPRING_DATASOURCE_PASSWORD
