@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: food-api
+  name: ms-pedido
   labels:
-    name: food-api
+    name: ms-pedido
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: food-api
+      app: ms-pedido
   template:
     metadata:
       labels:
-        app: food-api
+        app: ms-pedido
     spec:
       containers:
-      - name: food-api
+      - name: ms-pedido
         image: pabloldias/soat1-grupo18-ms-pedido:latest
         imagePullPolicy: IfNotPresent
         resources:
