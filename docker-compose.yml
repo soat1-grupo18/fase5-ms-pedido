@@ -8,7 +8,7 @@ services:
     container_name: pedido_app
     restart: always
     ports:
-      - 8082:8080
+      - "8082:8080"
     depends_on:
       - db
     environment:
@@ -16,6 +16,9 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SERVER_PORT=8080
+      - MS_PAGAMENTO_URL=http://pagamento_app:8083
+      - MS_PRODUCAO_URL=http://producao_app:8084
 
   db:
     image: postgres:15
@@ -26,4 +29,4 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - 5434:5432
+      - "5434:5432"
