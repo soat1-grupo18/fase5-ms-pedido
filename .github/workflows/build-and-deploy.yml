@@ -18,11 +18,15 @@ jobs:
       terraform-version: 1.7.0
     secrets: inherit
 
-  microservices-deploy:
+  java-microservice:
     needs:
       - infrastructure
-    uses: soat1-grupo18/fase3-reusable-github-workflows/.github/workflows/microservices-deploy.yml@main
+    uses: soat1-grupo18/fase3-reusable-github-workflows/.github/workflows/java-microservice.yml@main
     with:
-      microservice-id: soat1-grupo18-ms-pedido
-      manifest-directory-path: kubernetes
+      application-name: soat1-grupo18-ms-pedido
+      java-distribution: corretto
+      java-version: "17"
+      kubernetes-cluster-name: fiap-cluster
+      kubernetes-manifest-directory-path: kubernetes
+      kubernetes-namespace: ms-pedido
     secrets: inherit
