@@ -10,8 +10,8 @@ data "aws_subnets" "private" {
   }
 }
 
-resource "aws_db_subnet_group" "fiap_private_subnets" {
-  name       = "fiap-private-subnets"
+resource "aws_db_subnet_group" "fiap_ms_pedido" {
+  name       = "fiap-ms-pedido"
   subnet_ids = data.aws_subnets.private.ids
 }
 
@@ -30,18 +30,18 @@ resource "aws_db_instance" "fiap_ms_pedido" {
   backup_retention_period = 0
   apply_immediately       = true
 
-  db_subnet_group_name = aws_db_subnet_group.fiap_private_subnets.name
+  db_subnet_group_name = aws_db_subnet_group.fiap_ms_pedido.name
   vpc_security_group_ids = [
     aws_security_group.allow_same_vpc.id
   ]
 }
 
-resource "aws_security_group" "allow_same_vpc" {
-  name   = "Allow same VPC"
+resource "aws_security_group" "rds_fiap_ms_pedido" {
+  name   = "rds-fiap-ms-pedido"
   vpc_id = data.aws_vpc.fiap.id
 
   ingress {
-    description = "TLS from VPC"
+    description = "Same VPC"
     from_port   = 5432
     to_port     = 5432
     protocol    = "tcp"
