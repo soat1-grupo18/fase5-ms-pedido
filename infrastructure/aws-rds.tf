@@ -32,7 +32,7 @@ resource "aws_db_instance" "fiap_ms_pedido" {
 
   db_subnet_group_name = aws_db_subnet_group.fiap_ms_pedido.name
   vpc_security_group_ids = [
-    aws_security_group.allow_same_vpc.id
+    aws_security_group.rds_fiap_ms_pedido.id
   ]
 }
 
