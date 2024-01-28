@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   infrastructure:
-    uses: soat1-grupo18/fase3-reusable-github-workflows/.github/workflows/aws-terraform.yml@main
+    uses: soat1-grupo18/fase4-reusable-github-workflows/.github/workflows/aws-terraform.yml@main
     with:
       aws-region: us-east-1
       terraform-directory-path: infrastructure
@@ -21,7 +21,7 @@ jobs:
   java-microservice:
     needs:
       - infrastructure
-    uses: soat1-grupo18/fase3-reusable-github-workflows/.github/workflows/java-microservice.yml@main
+    uses: soat1-grupo18/fase4-reusable-github-workflows/.github/workflows/java-microservice.yml@main
     with:
       application-name: soat1-grupo18-ms-pedido
       java-distribution: corretto
