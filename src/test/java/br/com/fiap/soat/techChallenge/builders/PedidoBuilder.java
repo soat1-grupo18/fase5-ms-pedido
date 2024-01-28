@@ -25,7 +25,7 @@ public class PedidoBuilder {
         return pedido;
     }
 
-    private static ItemDoPedido buildItem(Produto produto) {
+    public static ItemDoPedido buildItem(Produto produto) {
         return new ItemDoPedido(
                 null,
                 produto.getNome(),

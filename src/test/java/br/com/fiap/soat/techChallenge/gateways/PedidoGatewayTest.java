@@ -1,6 +1,7 @@
 package br.com.fiap.soat.techChallenge.gateways;
 
 import br.com.fiap.soat.techChallenge.builders.PedidoBuilder;
+import br.com.fiap.soat.techChallenge.exceptions.PedidoNaoEncontradoException;
 import br.com.fiap.soat.techChallenge.jpa.entities.PedidoJpaEntity;
 import br.com.fiap.soat.techChallenge.jpa.repositories.PedidoRepository;
 import jakarta.transaction.Transactional;
@@ -8,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,5 +47,11 @@ class PedidoGatewayTest {
         assertEquals(pedidoInserido.getClienteId(), pedidoObtido.getClienteId());
         assertEquals(pedidoInserido.getItens().size(), pedidoObtido.getItens().size());
         assertEquals(pedidoInserido.getDataDeCriacao(), pedidoObtido.getDataDeCriacao());
+    }
+
+    @Test
+    void obterPedido_PedidoNaoEncontradoException() {
+        var pedidoId = UUID.randomUUID();
+        assertThrows(PedidoNaoEncontradoException.class, () -> pedidoGateway.obterPedido(pedidoId));
     }
 }

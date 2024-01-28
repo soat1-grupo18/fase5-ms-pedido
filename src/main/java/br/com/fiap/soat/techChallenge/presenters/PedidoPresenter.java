@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public class PedidoPresenter {
     private UUID id;
+    private UUID clienteId;
     private BigDecimal preco;
     private List<ItemDoPedidoPresenter> itens;
     private LocalDateTime dataDeCriacao;
@@ -30,6 +31,7 @@ public class PedidoPresenter {
         PedidoPresenter pedidoPresenter = new PedidoPresenter();
 
         pedidoPresenter.id = pedido.getId();
+        pedidoPresenter.clienteId = pedido.getClienteId();
         pedidoPresenter.preco = pedido.getPreco();
         pedidoPresenter.itens = pedido.getItens().stream().map(ItemDoPedidoPresenter::fromDomain).collect(Collectors.toList());
         pedidoPresenter.dataDeCriacao = pedido.getDataDeCriacao();

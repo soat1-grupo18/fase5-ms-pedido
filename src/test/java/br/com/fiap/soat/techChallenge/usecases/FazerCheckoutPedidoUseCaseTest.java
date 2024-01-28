@@ -42,6 +42,8 @@ class FazerCheckoutPedidoUseCaseTest {
     void execute() {
         when(produtoGateway.identificarPorId(any())).thenReturn(Optional.of(ProdutoBuilder.build()));
         when(pedidoGateway.inserirPedido(any())).thenAnswer(i -> i.getArgument(0));
+        when(pagamentoGateway.criarPagamento(any())).thenReturn(null);
+        when(producaoGateway.criarPedidoEmProducao(any())).thenReturn(null);
 
         var comando = ComandoDeNovoPedidoBuilder.build();
         var pedido = fazerCheckoutPedidoUseCase.execute(comando);
