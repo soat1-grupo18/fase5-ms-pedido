@@ -36,5 +36,9 @@ spec:
           value: dbpassword
         - name: SPRING_JPA_HIBERNATE_DDL_AUTO
           value: update
+        - name: MS_PAGAMENTO_URL
+          value: http://ms-pagamento.ms-pagamento
+        - name: MS_PRODUCAO_URL
+          value: http://ms-producao.ms-producao
         ports:
         - containerPort: 8080
