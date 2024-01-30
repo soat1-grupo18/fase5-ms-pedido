@@ -249,9 +249,7 @@
 									</formats>
 									<excludes>
 										<exclude>**/*config.*</exclude>
-										<exclude>src/main/java/br/com/fiap/soat/techChallenge/config</exclude>
 										<exclude>**/*Application.*</exclude>
-										<exclude>src/main/java/br/com/fiap/soat/techChallenge/TechChallengeApplication.java</exclude>
 									</excludes>
 								</configuration>
 							</execution>
