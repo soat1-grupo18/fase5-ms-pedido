@@ -249,6 +249,7 @@
 									</formats>
 									<excludes>
 										<exclude>**/*Application.*</exclude>
+										<exclude>**/*config.*</exclude>
 									</excludes>
 								</configuration>
 							</execution>
