@@ -23,8 +23,8 @@ resource "aws_db_instance" "fiap_ms_pedido" {
   instance_class          = "db.t3.micro"
   identifier              = "fiap-ms-pedido"
   db_name                 = "fiap_ms_pedido"
-  username                = "dbuser"
-  password                = "dbpassword"
+  username                = "dbuser"     # Insecure. It should use IAM authentication OR this should be hidden.
+  password                = "dbpassword" # Insecure. It should use IAM authentication OR this should be hidden.
   parameter_group_name    = "default.postgres15"
   skip_final_snapshot     = true
   backup_retention_period = 0
