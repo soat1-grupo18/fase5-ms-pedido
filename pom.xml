@@ -248,7 +248,6 @@
 										<format>XML</format>
 									</formats>
 									<excludes>
-										<exclude>**/*config.*</exclude>
 										<exclude>**/*Application.*</exclude>
 									</excludes>
 								</configuration>
