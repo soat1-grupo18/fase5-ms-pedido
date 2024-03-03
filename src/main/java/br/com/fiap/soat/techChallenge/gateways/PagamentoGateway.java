@@ -3,7 +3,6 @@ package br.com.fiap.soat.techChallenge.gateways;
 import br.com.fiap.soat.techChallenge.entities.Pedido;
 import br.com.fiap.soat.techChallenge.gateways.requests.PagamentoRequest;
 import br.com.fiap.soat.techChallenge.gateways.responses.PagamentoResponse;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PagamentoGatewayPort;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -12,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 @Component
-public class PagamentoGateway implements PagamentoGatewayPort {
+public class PagamentoGateway {
 
     public PagamentoGateway(WebClient pagamentoWebClient) {
         this.pagamentoWebClient = pagamentoWebClient;
@@ -20,7 +19,6 @@ public class PagamentoGateway implements PagamentoGatewayPort {
 
     private final WebClient pagamentoWebClient;
 
-    @Override
     public ResponseEntity<PagamentoResponse> criarPagamento(Pedido pedido) {
         var pagamentoRequest = new PagamentoRequest(pedido.getId(), pedido.getPreco());
 

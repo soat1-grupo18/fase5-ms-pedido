@@ -2,10 +2,7 @@ package br.com.fiap.soat.techChallenge.usecases;
 
 import br.com.fiap.soat.techChallenge.builders.ComandoDeNovoPedidoBuilder;
 import br.com.fiap.soat.techChallenge.builders.ProdutoBuilder;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PagamentoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PedidoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProducaoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProdutoGatewayPort;
+import br.com.fiap.soat.techChallenge.interfaces.gateways.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,23 +24,19 @@ class FazerCheckoutPedidoUseCaseTest {
     @Mock
     private ProdutoGatewayPort produtoGateway;
     @Mock
-    private PagamentoGatewayPort pagamentoGateway;
-    @Mock
-    private ProducaoGatewayPort producaoGateway;
+    private PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway;
 
     private FazerCheckoutPedidoUseCase fazerCheckoutPedidoUseCase;
 
     @BeforeEach
     void initUseCase() {
-        fazerCheckoutPedidoUseCase = new FazerCheckoutPedidoUseCase(pedidoGateway, produtoGateway, pagamentoGateway, producaoGateway);
+        fazerCheckoutPedidoUseCase = new FazerCheckoutPedidoUseCase(pedidoGateway, produtoGateway, pedidoRecebidoQueueGateway);
     }
 
     @Test
     void execute() {
         when(produtoGateway.identificarPorId(any())).thenReturn(Optional.of(ProdutoBuilder.build()));
         when(pedidoGateway.inserirPedido(any())).thenAnswer(i -> i.getArgument(0));
-        when(pagamentoGateway.criarPagamento(any())).thenReturn(null);
-        when(producaoGateway.criarPedidoEmProducao(any())).thenReturn(null);
 
         var comando = ComandoDeNovoPedidoBuilder.build();
         var pedido = fazerCheckoutPedidoUseCase.execute(comando);

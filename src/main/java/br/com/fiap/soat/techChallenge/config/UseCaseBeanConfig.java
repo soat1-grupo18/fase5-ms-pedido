@@ -1,9 +1,6 @@
 package br.com.fiap.soat.techChallenge.config;
 
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PagamentoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PedidoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProducaoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProdutoGatewayPort;
+import br.com.fiap.soat.techChallenge.interfaces.gateways.*;
 import br.com.fiap.soat.techChallenge.interfaces.usecases.*;
 import br.com.fiap.soat.techChallenge.usecases.*;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +32,7 @@ public class UseCaseBeanConfig {
     @Bean
     public FazerCheckoutPedidoUseCasePort fazerCheckoutPedidoUseCasePort(PedidoGatewayPort pedidoGatewayPort,
                                                                          ProdutoGatewayPort produtoGatewayPort,
-                                                                         PagamentoGatewayPort pagamentoGatewayPort,
-                                                                         ProducaoGatewayPort producaoGatewayPort) {
-        return new FazerCheckoutPedidoUseCase(pedidoGatewayPort, produtoGatewayPort, pagamentoGatewayPort, producaoGatewayPort);
+                                                                         PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGatewayPort) {
+        return new FazerCheckoutPedidoUseCase(pedidoGatewayPort, produtoGatewayPort, pedidoRecebidoQueueGatewayPort);
     }
 }
