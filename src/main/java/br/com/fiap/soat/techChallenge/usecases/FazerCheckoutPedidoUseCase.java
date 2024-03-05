@@ -1,12 +1,9 @@
 package br.com.fiap.soat.techChallenge.usecases;
 
 import br.com.fiap.soat.techChallenge.exceptions.ProdutoNaoEncontradoException;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PagamentoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProducaoGatewayPort;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.ProdutoGatewayPort;
+import br.com.fiap.soat.techChallenge.interfaces.gateways.*;
 import br.com.fiap.soat.techChallenge.usecases.model.ComandoDeNovoPedido;
 import br.com.fiap.soat.techChallenge.usecases.model.ItemDoComandoDeNovoPedido;
-import br.com.fiap.soat.techChallenge.interfaces.gateways.PedidoGatewayPort;
 import br.com.fiap.soat.techChallenge.interfaces.usecases.FazerCheckoutPedidoUseCasePort;
 import br.com.fiap.soat.techChallenge.entities.*;
 
@@ -16,18 +13,15 @@ import java.time.LocalDateTime;
 public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePort {
     private final PedidoGatewayPort pedidoGateway;
     private final ProdutoGatewayPort produtoGateway;
-    private final PagamentoGatewayPort pagamentoGateway;
-    private final ProducaoGatewayPort producaoGateway;
+    private final PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway;
 
     public FazerCheckoutPedidoUseCase(
             PedidoGatewayPort pedidoGateway,
             ProdutoGatewayPort produtoGateway,
-            PagamentoGatewayPort pagamentoGateway,
-            ProducaoGatewayPort producaoGateway) {
+            PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway) {
         this.pedidoGateway = pedidoGateway;
         this.produtoGateway = produtoGateway;
-        this.pagamentoGateway = pagamentoGateway;
-        this.producaoGateway = producaoGateway;
+        this.pedidoRecebidoQueueGateway = pedidoRecebidoQueueGateway;
     }
 
     @Override
@@ -58,8 +52,7 @@ public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePor
 
         pedido = pedidoGateway.inserirPedido(pedido);
 
-        producaoGateway.criarPedidoEmProducao(pedido);
-        pagamentoGateway.criarPagamento(pedido);
+        pedidoRecebidoQueueGateway.enviar(pedido);
 
         return pedido;
     }
