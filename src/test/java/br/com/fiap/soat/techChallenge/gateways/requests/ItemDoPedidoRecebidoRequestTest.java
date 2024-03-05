@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ItemDoPedidoEmProducaoRequestTest {
+class ItemDoPedidoRecebidoRequestTest {
 
     @Test
     void fromDomain() {
         var itemDoPedido = PedidoBuilder.buildItem(ProdutoBuilder.build());
-        var request = ItemDoPedidoEmProducaoRequest.fromDomain(itemDoPedido);
+        var request = ItemDoPedidoRecebidoRequest.fromDomain(itemDoPedido);
         assertEquals(itemDoPedido.getNome(), request.getNome());
         assertEquals(itemDoPedido.getDescricao(), request.getDescricao());
         assertEquals(itemDoPedido.getCategoria(), request.getCategoria());
