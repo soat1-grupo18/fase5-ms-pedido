@@ -172,11 +172,6 @@
 			<version>3.9.5</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>br.com.fiap.soat</groupId>
-			<artifactId>msPedidoTechChallenge</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

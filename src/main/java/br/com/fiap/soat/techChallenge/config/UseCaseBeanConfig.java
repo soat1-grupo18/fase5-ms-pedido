@@ -32,7 +32,7 @@ public class UseCaseBeanConfig {
     @Bean
     public FazerCheckoutPedidoUseCasePort fazerCheckoutPedidoUseCasePort(PedidoGatewayPort pedidoGatewayPort,
                                                                          ProdutoGatewayPort produtoGatewayPort,
-                                                                         PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGatewayPort) {
-        return new FazerCheckoutPedidoUseCase(pedidoGatewayPort, produtoGatewayPort, pedidoRecebidoQueueGatewayPort);
+                                                                         PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGatewayPort) {
+        return new FazerCheckoutPedidoUseCase(pedidoGatewayPort, produtoGatewayPort, pedidoRecebidoQueueOutGatewayPort);
     }
 }

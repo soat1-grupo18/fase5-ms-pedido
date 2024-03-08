@@ -24,13 +24,13 @@ class FazerCheckoutPedidoUseCaseTest {
     @Mock
     private ProdutoGatewayPort produtoGateway;
     @Mock
-    private PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway;
+    private PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway;
 
     private FazerCheckoutPedidoUseCase fazerCheckoutPedidoUseCase;
 
     @BeforeEach
     void initUseCase() {
-        fazerCheckoutPedidoUseCase = new FazerCheckoutPedidoUseCase(pedidoGateway, produtoGateway, pedidoRecebidoQueueGateway);
+        fazerCheckoutPedidoUseCase = new FazerCheckoutPedidoUseCase(pedidoGateway, produtoGateway, pedidoRecebidoQueueOutGateway);
     }
 
     @Test
