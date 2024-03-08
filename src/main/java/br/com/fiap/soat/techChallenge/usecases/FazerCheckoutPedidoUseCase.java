@@ -6,6 +6,7 @@ import br.com.fiap.soat.techChallenge.usecases.model.ComandoDeNovoPedido;
 import br.com.fiap.soat.techChallenge.usecases.model.ItemDoComandoDeNovoPedido;
 import br.com.fiap.soat.techChallenge.interfaces.usecases.FazerCheckoutPedidoUseCasePort;
 import br.com.fiap.soat.techChallenge.entities.*;
+import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,18 +14,19 @@ import java.time.LocalDateTime;
 public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePort {
     private final PedidoGatewayPort pedidoGateway;
     private final ProdutoGatewayPort produtoGateway;
-    private final PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway;
+    private final PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway;
 
     public FazerCheckoutPedidoUseCase(
             PedidoGatewayPort pedidoGateway,
             ProdutoGatewayPort produtoGateway,
-            PedidoRecebidoQueueGatewayPort pedidoRecebidoQueueGateway) {
+            PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway) {
         this.pedidoGateway = pedidoGateway;
         this.produtoGateway = produtoGateway;
-        this.pedidoRecebidoQueueGateway = pedidoRecebidoQueueGateway;
+        this.pedidoRecebidoQueueOutGateway = pedidoRecebidoQueueOutGateway;
     }
 
     @Override
+    @Transactional
     public Pedido execute(ComandoDeNovoPedido comandoDeNovoPedido) {
         Pedido pedido = new Pedido();
 
@@ -52,7 +54,7 @@ public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePor
 
         pedido = pedidoGateway.inserirPedido(pedido);
 
-        pedidoRecebidoQueueGateway.enviar(pedido);
+        pedidoRecebidoQueueOutGateway.enviar(pedido);
 
         return pedido;
     }
