@@ -42,4 +42,8 @@ public class PedidoPresenter {
     public LocalDateTime getDataDeCriacao() {
         return dataDeCriacao;
     }
+
+    public UUID getClienteId() {
+        return clienteId;
+    }
 }
