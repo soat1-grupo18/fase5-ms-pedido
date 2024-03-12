@@ -9,7 +9,7 @@ spring.jpa.show-sql=true
 server.port=8082
 
 queue.name.pedido-recebido=pedidoRecebido
-spring.cloud.aws.region.static=us-east-1
-spring.cloud.aws.credentials.access-key=
-spring.cloud.aws.credentials.secret-key=
-spring.cloud.aws.sqs.endpoint=http://localhost:4566
+spring.cloud.aws.region.static=${AWS_REGION}
+spring.cloud.aws.credentials.access-key=${AWS_ACCESS_KEY}
+spring.cloud.aws.credentials.secret-key=${AWS_SECRET_KEY}
+spring.cloud.aws.sqs.endpoint=${AWS_SQS_ENDPOINT}
