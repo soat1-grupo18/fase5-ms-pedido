@@ -14,12 +14,12 @@ import java.time.LocalDateTime;
 public class FazerCheckoutPedidoUseCase implements FazerCheckoutPedidoUseCasePort {
     private final PedidoGatewayPort pedidoGateway;
     private final ProdutoGatewayPort produtoGateway;
-    private final PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway;
+    private final PedidoRecebidoNotificationGatewayPort pedidoRecebidoQueueOutGateway;
 
     public FazerCheckoutPedidoUseCase(
             PedidoGatewayPort pedidoGateway,
             ProdutoGatewayPort produtoGateway,
-            PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway) {
+            PedidoRecebidoNotificationGatewayPort pedidoRecebidoQueueOutGateway) {
         this.pedidoGateway = pedidoGateway;
         this.produtoGateway = produtoGateway;
         this.pedidoRecebidoQueueOutGateway = pedidoRecebidoQueueOutGateway;
