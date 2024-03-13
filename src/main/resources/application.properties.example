@@ -8,8 +8,8 @@ spring.jpa.show-sql=true
 
 server.port=8082
 
-queue.name.pedido-recebido=pedidoRecebido
+topic.name=ms-pedido
 spring.cloud.aws.region.static=${AWS_REGION}
 spring.cloud.aws.credentials.access-key=${AWS_ACCESS_KEY}
 spring.cloud.aws.credentials.secret-key=${AWS_SECRET_KEY}
-spring.cloud.aws.sqs.endpoint=${AWS_SQS_ENDPOINT}
+spring.cloud.aws.sns.endpoint=${AWS_SNS_ENDPOINT}

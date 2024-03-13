@@ -24,7 +24,7 @@ class FazerCheckoutPedidoUseCaseTest {
     @Mock
     private ProdutoGatewayPort produtoGateway;
     @Mock
-    private PedidoRecebidoQueueOutGatewayPort pedidoRecebidoQueueOutGateway;
+    private PedidoRecebidoNotificationGatewayPort pedidoRecebidoQueueOutGateway;
 
     private FazerCheckoutPedidoUseCase fazerCheckoutPedidoUseCase;
 
