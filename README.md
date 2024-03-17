@@ -6,6 +6,7 @@ Microsserviço de Pedido modificado durante a fase 5 da Pós Tech Software Archi
 
 ![](https://github.com/pabloldias/soat1-grupo18/actions/workflows/build-and-test.yml/badge.svg)
 
+- [Fase 5 - Microsserviço - Pedido](#fase-5---microsserviço---pedido)
 - [Tech Challenge](#tech-challenge)
   - [Alunos](#alunos)
   - [Tecnologias utilizadas](#tecnologias-utilizadas)
@@ -70,4 +71,3 @@ Há um arquivo [insomnia-collection.yml](insomnia-collection.yml) na raiz do rep
 ### Event Storming
 
 Nosso *event storming* está disponível em um [board do Miro](https://miro.com/app/board/uXjVMHS5nec=/).
-
