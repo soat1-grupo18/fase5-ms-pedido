@@ -6,7 +6,7 @@ resource "kubernetes_config_map" "example" {
 
   data = {
     aws_region             = data.aws_region.current.name
-    aws_sns_endpoint       = "sns.${data.aws_region.current.name}.amazonaws.com"
+    aws_sns_endpoint       = "https://sns.${data.aws_region.current.name}.amazonaws.com"
     aws_sns_ms_pedido_arn  = aws_sns_topic.ms_pedido.arn
     spring_data_source_url = "jdbc:postgresql://${aws_db_instance.fiap_ms_pedido.endpoint}/${aws_db_instance.fiap_ms_pedido.db_name}"
   }
