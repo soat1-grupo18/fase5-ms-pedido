@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-pedido
-        image: pabloldias/soat1-grupo18-ms-pedido:latest
+        image: olegon/soat1-grupo18-ms-pedido:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
