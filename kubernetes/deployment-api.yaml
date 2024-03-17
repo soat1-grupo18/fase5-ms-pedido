@@ -29,13 +29,19 @@ spec:
         - name: SERVER_PORT
           value: "8080"
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:postgresql://fiap-ms-pedido.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_ms_pedido
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: spring_data_source_url
         - name: SPRING_DATASOURCE_USERNAME
           value: dbuser # Bad practice. It should be a secret.
         - name: SPRING_DATASOURCE_PASSWORD
           value: dbpassword # Bad practice. It should be a secret.
         - name: AWS_REGION
-          value: us-east-1
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: aws_region
         - name: AWS_ACCESS_KEY
           valueFrom:
             secretKeyRef:
@@ -47,6 +53,9 @@ spec:
               name: aws-credentials
               key: aws_secret_key
         - name: AWS_SNS_ENDPOINT
-          value: "sns.us-east-1.amazonaws.com"
+          valueFrom:
+            secretKeyRef:
+              name: application-config
+              key: aws_sns_endpoint
         ports:
         - containerPort: 8080
