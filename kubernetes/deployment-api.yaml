@@ -57,5 +57,10 @@ spec:
             configMapKeyRef:
               name: application-config
               key: aws_sns_endpoint
+        - name: TOPIC_PEDIDO
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: aws_sns_ms_pedido_arn
         ports:
         - containerPort: 8080
