@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-pedido
-        image: pabloldias/soat1-grupo18-ms-pedido:latest
+        image: olegon/soat1-grupo18-ms-pedido:latest
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -29,16 +29,38 @@ spec:
         - name: SERVER_PORT
           value: "8080"
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:postgresql://fiap-ms-pedido.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_ms_pedido
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: spring_data_source_url
         - name: SPRING_DATASOURCE_USERNAME
-          value: dbuser
+          value: dbuser # Bad practice. It should be a secret.
         - name: SPRING_DATASOURCE_PASSWORD
-          value: dbpassword
-        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
-          value: update
-        - name: MS_PAGAMENTO_URL
-          value: http://ms-pagamento.ms-pagamento
-        - name: MS_PRODUCAO_URL
-          value: http://ms-producao.ms-producao
+          value: dbpassword # Bad practice. It should be a secret.
+        - name: AWS_REGION
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: aws_region
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key
+        - name: AWS_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_key
+        - name: AWS_SNS_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: aws_sns_endpoint
+        - name: TOPIC_PEDIDO
+          valueFrom:
+            configMapKeyRef:
+              name: application-config
+              key: aws_sns_ms_pedido_arn
         ports:
         - containerPort: 8080

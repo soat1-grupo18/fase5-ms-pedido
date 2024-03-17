@@ -15,12 +15,12 @@ jobs:
     with:
       java-distribution: corretto
       java-version: "17"
-      sonar-project-key: soat1-grupo18_fase4-ms-pedido
+      sonar-project-key: soat1-grupo18_fase5-ms-pedido
     secrets: inherit
     
   infrastructure:
-    needs:
-      - java-quality
+    # needs:
+    #   - java-quality
     uses: soat1-grupo18/fase5-reusable-github-workflows/.github/workflows/aws-terraform.yml@main
     with:
       aws-region: us-east-1
