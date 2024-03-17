@@ -31,14 +31,22 @@ spec:
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://fiap-ms-pedido.cr0dnn5xiohv.us-east-1.rds.amazonaws.com:5432/fiap_ms_pedido
         - name: SPRING_DATASOURCE_USERNAME
-          value: dbuser
+          value: dbuser # Bad practice. It should be a secret.
         - name: SPRING_DATASOURCE_PASSWORD
-          value: dbpassword
-        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
-          value: update
-        - name: MS_PAGAMENTO_URL
-          value: http://ms-pagamento.ms-pagamento
-        - name: MS_PRODUCAO_URL
-          value: http://ms-producao.ms-producao
+          value: dbpassword # Bad practice. It should be a secret.
+        - name: AWS_REGION
+          value: us-east-1
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_access_key
+        - name: AWS_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: aws-credentials
+              key: aws_secret_key
+        - name: AWS_SNS_ENDPOINT
+          value: "sns.us-east-1.amazonaws.com"
         ports:
         - containerPort: 8080
